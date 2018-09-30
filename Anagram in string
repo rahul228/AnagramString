@@ -1,32 +1,51 @@
 import java.util.Scanner;
-public class P12_16_29_37 {
+public class Anagram {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter the string");
-		String a=sc.nextLine();
-		a=a.trim();
-		for(int i=0;i<a.length();i++) {
-			char ch=a.charAt(i);
+		System.out.println("Enter the first string");
+		String s=sc.nextLine();
+		System.out.println("Enter the second string");
+		String s1=sc.nextLine();
+		String s2=s.concat(s1);
+		//System.out.println(s2);
+		s2=s2.toLowerCase();
+		//System.out.println(s2);
+		boolean flag1=true;
+		for(int i=0;i<s2.length();i++) {
 			int c=1;
 			boolean flag=true;
+			char ch=s2.charAt(i);
 			for(int j=i-1;j>=0;j--) {
-				char ch1=a.charAt(j);
+				char ch1=s2.charAt(j);
 				if(ch==ch1) {
-				flag=false;
+					flag=false;
 				}
-			}
-		
-		if(flag==true) {
-			for(int k=i+1;k<a.length();k++) {
-				char ch1=a.charAt(k);
-				if(ch==ch1) {
-					c++;
+			}if(flag==true) {
+				for(int j=i+1;j<s2.length();j++) {
+					char ch1=s2.charAt(j);
+					if(ch==ch1) {
+						c++;
 					}
-			}System.out.println("frequency of "+ch+" is "+c);
-				
+				}if(c>2) {
+					System.out.println("Not an anagram");
+					flag1=false;
+					break;
+				}
+				else if(c==1||c==0) {
+					System.out.println("Not an anagram");
+					flag1=false;
+					break;
+				}
+				else {
+					flag1=true;
+				}
+				//System.out.println("char "+ch+"has count"+c);
 			}
+		}if(flag1==true) {
+			System.out.println("Anagram");
 		}
-}
+	}
+
 }
